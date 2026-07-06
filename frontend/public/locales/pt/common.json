@@ -1244,10 +1244,11 @@
   },
   "viewToggle": {
     "cards": "Cartões",
-    "components": "Componentes",
+    "components": "Resultados de testes",
     "label": "Modo de visualização",
     "table": "Tabela",
-    "stacked": "Empilhado"
+    "stacked": "Empilhado",
+    "labwork": "Análises"
   },
   "visits": {
     "addNewVisit": "Adicionar Nova Consulta",

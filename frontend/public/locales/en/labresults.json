@@ -107,14 +107,15 @@
   "discardParsedData": "Discard Parsed Data",
   "display": {
     "errorDisplaying": "Error displaying test components",
-    "noComponents": "No test components found",
-    "noComponentsDescription": "Test components will appear here once they are added to this lab result.",
+    "noComponents": "No test results found",
+    "noComponentsDescription": "Test results will appear here once they are added to this lab result.",
     "referenceLabel": "Reference:",
     "resultsGrouped": "{{count}} more result in this group",
     "resultsGrouped_other": "{{count}} more results in this group",
     "trendAvailable": "Trend data available"
   },
   "editTitle": "Edit Lab Result",
+  "addDetailsTitle": "Add Lab Result Details",
   "emptyLabResultMessage": "You created a lab result but didn't add any test components. Would you like to delete this lab result?",
   "emptyLabResultWarning": "Lab Result Created But Empty",
   "errorOccurred": "An error occurred",
@@ -141,8 +142,7 @@
     "selectResult": "Select result",
     "statusIndicator": "Status Indicator:",
     "testCodePlaceholder": "e.g., 718-7",
-    "testComponents": "Test Components (Optional)",
-    "testComponentsDescription": "Optionally add individual test values. You can also add more later.",
+    "testComponents": "Add Tests",
     "testDetails": "Test Details",
     "unit": "Unit",
     "matchedCommonName": "matched: {{name}}"
@@ -158,6 +158,7 @@
   "loading": "Loading lab results...",
   "loadingHint": "If this takes too long, please refresh the page",
   "messages": {
+    "noRelationshipsAvailable": "No medical conditions or visits on record. Add them first to link them here.",
     "relationshipsCreateInfo": "Relationships can be added after saving the lab result.",
     "relationshipsSaveFirst": "Save the lab result first to create relationship links.",
     "testComponentsEditInfo": "Test components can be managed from the view page after saving."
@@ -170,11 +171,12 @@
     },
     "sections": {
       "associatedFiles": "Associated Documents",
+      "panelDetails": "Panel Details",
       "testInfo": "Test Information",
       "testResults": "Test Results"
     },
     "tabs": {
-      "testComponents": "Test Components"
+      "testComponents": "Test Results"
     },
     "title": "Lab Result Details"
   },
@@ -263,19 +265,19 @@
     "moreCategories": "+{{count}} more",
     "moreCategories_one": "+{{count}} more",
     "moreCategories_other": "+{{count}} more",
-    "noComponents": "No test components",
-    "testComponentsCount": "Test Components ({{count}})",
-    "testComponentsCount_one": "Test Components ({{count}})",
-    "testComponentsCount_other": "Test Components ({{count}})",
-    "testComponentsTotal": "{{count}} test component",
-    "testComponentsTotal_one": "{{count}} test component",
-    "testComponentsTotal_other": "{{count}} test components",
-    "unavailable": "Test components unavailable"
+    "noComponents": "No test results",
+    "testComponentsCount": "Test Results ({{count}})",
+    "testComponentsCount_one": "Test Results ({{count}})",
+    "testComponentsCount_other": "Test Results ({{count}})",
+    "testComponentsTotal": "{{count}} test result",
+    "testComponentsTotal_one": "{{count}} test result",
+    "testComponentsTotal_other": "{{count}} test results",
+    "unavailable": "Test results unavailable"
   },
   "tabs": {
     "bulkEntry": "Bulk Entry",
-    "noComponentsDescription": "Add test components using the templates or bulk entry tools below to track individual lab values and trends.",
-    "noComponentsYet": "No test components yet",
+    "noComponentsDescription": "Add test results using the templates or bulk entry tools below to track individual lab values and trends.",
+    "noComponentsYet": "No test results yet",
     "relationships": "Relationships",
     "resultsStatus": "Results & Status",
     "templates": "Templates"
@@ -317,7 +319,7 @@
     "placeholder": "e.g., CBC, 85025"
   },
   "testComponents": {
-    "addTestComponents": "Add Test Components",
+    "addTestComponents": "Add Tests",
     "addTests": "Add Tests",
     "categories": {
       "cardiology": "Cardiology - Heart & Cardiac Markers",
@@ -332,7 +334,8 @@
       "molecular": "Molecular - DNA Tests",
       "other": "Other Tests",
       "pathology": "Pathology - Tissue & Biopsy Analysis",
-      "toxicology": "Toxicology - Drug & Toxin Screening"
+      "toxicology": "Toxicology - Drug & Toxin Screening",
+      "imaging": "Imaging - Radiology & Scans"
     },
     "editModal": {
       "descriptions": {
@@ -365,26 +368,36 @@
         "unit": "e.g., g/dL",
         "value": "Enter test value"
       },
-      "title": "Edit Test Component",
+      "title": "Edit Test",
       "trendLinking": "Trend Linking",
-      "updating": "Updating test component..."
+      "updating": "Updating test..."
     },
     "emptyState": {
       "description": "Templates provide common lab panels (CBC, CMP, etc.) where you can enter values and ranges. Bulk import allows you to copy/paste results from lab reports for automatic parsing."
     },
-    "errorLoading": "Error loading test components",
-    "noComponents": "No test components",
-    "noComponentsDescription": "This lab result doesn't have any individual test components yet.",
+    "errorLoading": "Error loading tests",
+    "noComponents": "No tests",
+    "noComponentsDescription": "This lab result doesn't have any tests yet.",
     "notifications": {
       "componentDeleted": "Component deleted",
       "hasBeenDeleted": "{{name}} has been deleted"
     },
     "refreshComponents": "Refresh components",
+    "resultType": {
+      "qualitative": "Qualitative (Pos/Neg)",
+      "quantitative": "Quantitative (Numeric)",
+      "textual": "Textual (Report)"
+    },
     "tabs": {
       "statistics": "Statistics",
       "testResults": "Test Results"
     },
-    "title": "Test Components"
+    "title": "Tests"
+  },
+  "textualResult": {
+    "label": "Result Text",
+    "noText": "—",
+    "placeholder": "Enter result text (e.g. No acute findings)"
   },
   "testingFacility": {
     "description": "Where the test is/was performed",
@@ -426,6 +439,7 @@
     "labLabel": "Lab: {{name}}",
     "negativeUndetected": "Negative/Undetected",
     "noDataPoints": "No data points to display",
+    "notAvailableForTextual": "Trend charts are not available for textual results.",
     "positiveDetected": "Positive/Detected",
     "referenceRange": "Reference Range:",
     "referenceValue": "Reference: {{min}} - {{max}}"
@@ -438,15 +452,19 @@
     "dataPoints_one": "{{count}} data points",
     "dataPoints_other": "{{count}} data points",
     "dataTable": "Data Table",
+    "decreasing": "Decreasing",
     "inRange": "{{percent}}% in range",
+    "increasing": "Increasing",
     "latest": "Latest",
     "noData": "No trend data available",
     "noDataDescription": "There are no historical data points for this test component.",
     "normalLabel": "Normal:",
     "range": "Range",
     "showing": "Showing:",
+    "stable": "Stable",
     "stdDevLabel": "Std Dev:",
     "summaryStatistics": "Summary Statistics",
+    "textualNoStats": "Numeric statistics are not available for textual results.",
     "timeRange": "Time Range",
     "title": "Trend Analysis",
     "total": "Total"
@@ -457,7 +475,8 @@
     "historicalData_one": "Historical Data ({{count}} point)",
     "historicalData_other": "Historical Data ({{count}} points)",
     "labResult": "Lab Result",
-    "noDataPoints": "No data points to display"
+    "noDataPoints": "No data points to display",
+    "notSpecified": "Not specified"
   },
   "unsavedDataInstructions": "Click \"Add Components\" in the Preview tab to save your parsed data before closing.",
   "unsavedDataMessage_one": "You have {{count}} parsed test component(s) that haven't been added yet. If you close now, you'll lose this parsed data.",
@@ -488,5 +507,19 @@
     "refTextLabel": "Range text",
     "refTextPlaceholder": "e.g. 4.0-5.6 or <200",
     "refTextDescription": "Overrides min/max in display"
+  },
+  "resultsTable": {
+    "expandAll": "Expand All",
+    "collapseAll": "Collapse All",
+    "results": "{{count}} result",
+    "results_other": "{{count}} results",
+    "noResults": "No test results match the current filters",
+    "dateFrom": "Date from",
+    "dateTo": "Date to",
+    "source": "Source",
+    "viewTrends": "View trends"
+  },
+  "testEntry": {
+    "label": "Test #{{number}}"
   }
 }

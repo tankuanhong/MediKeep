@@ -107,14 +107,15 @@
   "discardParsedData": "Descartar Dados Analisados",
   "display": {
     "errorDisplaying": "Erro ao exibir componentes do exame",
-    "noComponents": "Nenhum componente de exame encontrado",
-    "noComponentsDescription": "Os componentes do exame aparecerão aqui assim que forem adicionados a este resultado laboratorial.",
+    "noComponents": "Nenhum resultado de exame encontrado",
+    "noComponentsDescription": "Os resultados do exame aparecerão aqui assim que forem adicionados a este resultado laboratorial.",
     "referenceLabel": "Referência:",
     "resultsGrouped": "{{count}} resultado adicional neste grupo",
     "resultsGrouped_other": "{{count}} resultados adicionais neste grupo",
     "trendAvailable": "Dados de tendência disponíveis"
   },
   "editTitle": "Editar Resultado Laboratorial",
+  "addDetailsTitle": "Adicionar detalhes do resultado laboratorial",
   "emptyLabResultMessage": "Você criou um resultado laboratorial mas não adicionou nenhum componente de exame. Gostaria de excluir este resultado laboratorial?",
   "emptyLabResultWarning": "Resultado Laboratorial Criado Mas Vazio",
   "errorOccurred": "Ocorreu um erro",
@@ -142,7 +143,6 @@
     "statusIndicator": "Indicador de Status:",
     "testCodePlaceholder": "p.ex., 718-7",
     "testComponents": "Componentes do Exame (Opcional)",
-    "testComponentsDescription": "Opcionalmente adicione valores individuais do exame. Você também pode adicionar mais tarde.",
     "testDetails": "Detalhes do Exame",
     "unit": "Unidade",
     "matchedCommonName": "correspondência: {{name}}"
@@ -158,6 +158,7 @@
   "loading": "Carregando resultados laboratoriais...",
   "loadingHint": "Se isso demorar muito, atualize a página",
   "messages": {
+    "noRelationshipsAvailable": "Nenhuma condição médica ou visita registrada. Adicione-as primeiro para vinculá-las aqui.",
     "relationshipsCreateInfo": "Relacionamentos podem ser adicionados após salvar o resultado laboratorial.",
     "relationshipsSaveFirst": "Salve o resultado laboratorial primeiro para criar vínculos de relacionamento.",
     "testComponentsEditInfo": "Componentes do exame podem ser gerenciados na página de visualização após salvar."
@@ -166,15 +167,16 @@
     "editLabResult": "Editar Resultado Laboratorial",
     "labels": {
       "testType": "Tipo de Exame",
-        "referenceRange": "Intervalo de Referência"
+      "referenceRange": "Intervalo de Referência"
     },
     "sections": {
       "associatedFiles": "Documentos Associados",
+      "panelDetails": "Detalhes do Painel",
       "testInfo": "Informações do Exame",
       "testResults": "Resultados do Exame"
     },
     "tabs": {
-      "testComponents": "Componentes do Exame"
+      "testComponents": "Resultados do Exame"
     },
     "title": "Detalhes do Resultado Laboratorial"
   },
@@ -263,19 +265,19 @@
     "moreCategories": "+{{count}} mais",
     "moreCategories_one": "+{{count}} mais",
     "moreCategories_other": "+{{count}} mais",
-    "noComponents": "Sem componentes de exame",
-    "testComponentsCount": "Componentes do Exame ({{count}})",
-    "testComponentsCount_one": "Componentes do Exame ({{count}})",
-    "testComponentsCount_other": "Componentes do Exame ({{count}})",
-    "testComponentsTotal": "{{count}} componente de exame",
-    "testComponentsTotal_one": "{{count}} componente de exame",
-    "testComponentsTotal_other": "{{count}} componentes de exame",
-    "unavailable": "Componentes de exame indisponíveis"
+    "noComponents": "Sem resultados de exame",
+    "testComponentsCount": "Resultados do Exame ({{count}})",
+    "testComponentsCount_one": "Resultados do Exame ({{count}})",
+    "testComponentsCount_other": "Resultados do Exame ({{count}})",
+    "testComponentsTotal": "{{count}} resultado de exame",
+    "testComponentsTotal_one": "{{count}} resultado de exame",
+    "testComponentsTotal_other": "{{count}} resultados de exame",
+    "unavailable": "Resultados de exame indisponíveis"
   },
   "tabs": {
     "bulkEntry": "Entrada em Massa",
-    "noComponentsDescription": "Adicione componentes de exame usando os modelos ou ferramentas de entrada em massa abaixo para acompanhar valores laboratoriais individuais e tendências.",
-    "noComponentsYet": "Ainda sem componentes de exame",
+    "noComponentsDescription": "Adicione resultados de exame usando os modelos ou ferramentas de entrada em massa abaixo para acompanhar valores laboratoriais individuais e tendências.",
+    "noComponentsYet": "Ainda sem resultados de exame",
     "relationships": "Relacionamentos",
     "resultsStatus": "Resultados e Status",
     "templates": "Modelos"
@@ -317,7 +319,7 @@
     "placeholder": "p.ex., HC, 85025"
   },
   "testComponents": {
-    "addTestComponents": "Adicionar Componentes do Exame",
+    "addTestComponents": "Adicionar exames",
     "addTests": "Adicionar Exames",
     "categories": {
       "cardiology": "Cardiologia - Coração e Marcadores Cardíacos",
@@ -332,7 +334,8 @@
       "molecular": "Molecular - Testes de DNA",
       "other": "Outros Exames",
       "pathology": "Patologia - Análise de Tecidos e Biópsia",
-      "toxicology": "Toxicologia - Triagem de Drogas e Toxinas"
+      "toxicology": "Toxicologia - Triagem de Drogas e Toxinas",
+      "imaging": "Imagem - Radiologia & Scans"
     },
     "editModal": {
       "descriptions": {
@@ -365,16 +368,16 @@
         "unit": "p.ex., g/dL",
         "value": "Digite o valor do exame"
       },
-      "title": "Editar Componente do Exame",
+      "title": "Editar exame",
       "trendLinking": "Vinculação de Tendência",
-      "updating": "Atualizando componente do exame..."
+      "updating": "Atualizando exame..."
     },
     "emptyState": {
       "description": "Modelos fornecem painéis laboratoriais comuns (HC, QMB, etc.) onde você pode inserir valores e intervalos. Importação em massa permite copiar/colar resultados de relatórios laboratoriais para análise automática."
     },
-    "errorLoading": "Erro ao carregar componentes do exame",
-    "noComponents": "Sem componentes de exame",
-    "noComponentsDescription": "Este resultado laboratorial ainda não possui nenhum componente individual de exame.",
+    "errorLoading": "Erro ao carregar exames",
+    "noComponents": "Sem exames",
+    "noComponentsDescription": "Este resultado laboratorial ainda não possui exames.",
     "notifications": {
       "componentDeleted": "Componente excluído",
       "hasBeenDeleted": "{{name}} foi excluído"
@@ -384,7 +387,12 @@
       "statistics": "Estatísticas",
       "testResults": "Resultados dos Exames"
     },
-    "title": "Componentes do Exame"
+    "title": "Exames",
+    "resultType": {
+      "qualitative": "Qualitativo (Pos/Neg)",
+      "quantitative": "Quantitativo (Numérico)",
+      "textual": "Textual (Relatório)"
+    }
   },
   "testingFacility": {
     "description": "Onde o exame é/foi realizado",
@@ -428,7 +436,8 @@
     "noDataPoints": "Nenhum ponto de dados para exibir",
     "positiveDetected": "Positivo/Detectado",
     "referenceRange": "Intervalo de Referência:",
-    "referenceValue": "Referência: {{min}} - {{max}}"
+    "referenceValue": "Referência: {{min}} - {{max}}",
+    "notAvailableForTextual": "Gráficos de tendência não estão disponíveis para resultados textuais."
   },
   "trends": {
     "abnormalLabel": "Anormal:",
@@ -449,7 +458,11 @@
     "summaryStatistics": "Estatísticas Resumo",
     "timeRange": "Período de Tempo",
     "title": "Análise de Tendências",
-    "total": "Total"
+    "total": "Total",
+    "decreasing": "Decrescente",
+    "increasing": "Crescente",
+    "stable": "Estável",
+    "textualNoStats": "Estatísticas numéricas não estão disponíveis para resultados textuais."
   },
   "trendTable": {
     "clickToSort": "Clique nos cabeçalhos das colunas para ordenar",
@@ -457,7 +470,8 @@
     "historicalData_one": "Dados Históricos ({{count}} ponto)",
     "historicalData_other": "Dados Históricos ({{count}} pontos)",
     "labResult": "Resultado Laboratorial",
-    "noDataPoints": "Nenhum ponto de dados para exibir"
+    "noDataPoints": "Nenhum ponto de dados para exibir",
+    "notSpecified": "Não especificado"
   },
   "unsavedDataInstructions": "Clique em \"Adicionar Componentes\" na aba Visualizar para salvar seus dados analisados antes de fechar.",
   "unsavedDataMessage_one": "Você possui {{count}} componente(s) de exame analisado(s) que ainda não foram adicionados. Se fechar agora, você perderá estes dados analisados.",
@@ -488,5 +502,24 @@
     "refTextLabel": "Texto do intervalo",
     "refTextPlaceholder": "ex. 4,0-5,6 ou <200",
     "refTextDescription": "Substitui min/máx na exibição"
+  },
+  "resultsTable": {
+    "expandAll": "Expandir tudo",
+    "collapseAll": "Recolher tudo",
+    "results": "{{count}} resultado",
+    "results_other": "{{count}} resultados",
+    "noResults": "Nenhum resultado de teste corresponde aos filtros atuais",
+    "dateFrom": "Data de",
+    "dateTo": "Data até",
+    "source": "Fonte",
+    "viewTrends": "Ver tendências"
+  },
+  "testEntry": {
+    "label": "Teste #{{number}}"
+  },
+  "textualResult": {
+    "label": "Texto do resultado",
+    "noText": "—",
+    "placeholder": "Insira o texto do resultado (ex.: Sem achados agudos)"
   }
 }

@@ -107,14 +107,15 @@
   "discardParsedData": "Analysierte Daten verwerfen",
   "display": {
     "errorDisplaying": "Fehler beim Anzeigen der Testkomponenten",
-    "noComponents": "Keine Testkomponenten gefunden",
-    "noComponentsDescription": "Testkomponenten werden hier angezeigt, sobald sie zu diesem Laborergebnis hinzugefügt werden.",
+    "noComponents": "Keine Testergebnisse gefunden",
+    "noComponentsDescription": "Testergebnisse werden hier angezeigt, sobald sie zu diesem Laborergebnis hinzugefügt werden.",
     "referenceLabel": "Referenz:",
     "resultsGrouped": "{{count}} weiteres Ergebnis in dieser Gruppe",
     "resultsGrouped_other": "{{count}} weitere Ergebnisse in dieser Gruppe",
     "trendAvailable": "Trenddaten verfügbar"
   },
   "editTitle": "Laborergebnis bearbeiten",
+  "addDetailsTitle": "Laborbefund-Details hinzufügen",
   "emptyLabResultMessage": "Sie haben ein Laborergebnis erstellt, aber keine Testkomponenten hinzugefügt. Möchten Sie dieses Laborergebnis löschen?",
   "emptyLabResultWarning": "Laborergebnis erstellt, aber leer",
   "errorOccurred": "Ein Fehler ist aufgetreten",
@@ -142,7 +143,6 @@
     "statusIndicator": "Statusindikator:",
     "testCodePlaceholder": "z. B. 718-7",
     "testComponents": "Testkomponenten (Optional)",
-    "testComponentsDescription": "Optional einzelne Testwerte hinzufügen. Sie können später weitere hinzufügen.",
     "testDetails": "Testdetails",
     "unit": "Einheit",
     "matchedCommonName": "Treffer: {{name}}"
@@ -158,6 +158,7 @@
   "loading": "Laborergebnisse werden geladen...",
   "loadingHint": "Falls dies zu lange dauert, aktualisieren Sie bitte die Seite",
   "messages": {
+    "noRelationshipsAvailable": "Keine medizinischen Erkrankungen oder Besuche vorhanden. Fügen Sie diese zuerst hinzu, um sie hier zu verknüpfen.",
     "relationshipsCreateInfo": "Verknüpfungen können nach dem Speichern des Laborergebnisses hinzugefügt werden.",
     "relationshipsSaveFirst": "Speichern Sie zuerst das Laborergebnis, um Verknüpfungen zu erstellen.",
     "testComponentsEditInfo": "Testkomponenten können nach dem Speichern über die Ansichtsseite verwaltet werden."
@@ -166,15 +167,16 @@
     "editLabResult": "Laborergebnis bearbeiten",
     "labels": {
       "testType": "Testtyp",
-        "referenceRange": "Referenzbereich"
+      "referenceRange": "Referenzbereich"
     },
     "sections": {
       "associatedFiles": "Zugehörige Dokumente",
+      "panelDetails": "Panel-Details",
       "testInfo": "Testinformationen",
       "testResults": "Testergebnisse"
     },
     "tabs": {
-      "testComponents": "Testkomponenten"
+      "testComponents": "Testergebnisse"
     },
     "title": "Laborergebnis-Details"
   },
@@ -263,19 +265,19 @@
     "moreCategories": "+{{count}} weitere",
     "moreCategories_one": "+{{count}} weitere",
     "moreCategories_other": "+{{count}} weitere",
-    "noComponents": "Keine Testkomponenten",
-    "testComponentsCount": "Testkomponenten ({{count}})",
-    "testComponentsCount_one": "Testkomponenten ({{count}})",
-    "testComponentsCount_other": "Testkomponenten ({{count}})",
-    "testComponentsTotal": "{{count}} Testkomponente",
-    "testComponentsTotal_one": "{{count}} Testkomponente",
-    "testComponentsTotal_other": "{{count}} Testkomponenten",
-    "unavailable": "Testkomponenten nicht verfügbar"
+    "noComponents": "Keine Testergebnisse",
+    "testComponentsCount": "Testergebnisse ({{count}})",
+    "testComponentsCount_one": "Testergebnisse ({{count}})",
+    "testComponentsCount_other": "Testergebnisse ({{count}})",
+    "testComponentsTotal": "{{count}} Testergebnis",
+    "testComponentsTotal_one": "{{count}} Testergebnis",
+    "testComponentsTotal_other": "{{count}} Testergebnisse",
+    "unavailable": "Testergebnisse nicht verfügbar"
   },
   "tabs": {
     "bulkEntry": "Masseneingabe",
-    "noComponentsDescription": "Fügen Sie Testkomponenten mit den Vorlagen oder Masseneingabe-Tools unten hinzu, um einzelne Laborwerte und Trends zu verfolgen.",
-    "noComponentsYet": "Noch keine Testkomponenten",
+    "noComponentsDescription": "Fügen Sie Testergebnisse mit den Vorlagen oder Masseneingabe-Tools unten hinzu, um einzelne Laborwerte und Trends zu verfolgen.",
+    "noComponentsYet": "Noch keine Testergebnisse",
     "relationships": "Verknüpfungen",
     "resultsStatus": "Ergebnisse & Status",
     "templates": "Vorlagen"
@@ -317,7 +319,7 @@
     "placeholder": "z. B. CBC, 85025"
   },
   "testComponents": {
-    "addTestComponents": "Testkomponenten hinzufügen",
+    "addTestComponents": "Tests hinzufügen",
     "addTests": "Tests hinzufügen",
     "categories": {
       "cardiology": "Kardiologie - Herz- & Herzmarker",
@@ -332,7 +334,8 @@
       "molecular": "Molekularbiologie - DNA-Tests",
       "other": "Sonstige Tests",
       "pathology": "Pathologie - Gewebe- & Biopsieanalyse",
-      "toxicology": "Toxikologie - Drogen- & Toxin-Screening"
+      "toxicology": "Toxikologie - Drogen- & Toxin-Screening",
+      "imaging": "Bildgebung - Radiologie & Scans"
     },
     "editModal": {
       "descriptions": {
@@ -365,16 +368,16 @@
         "unit": "z. B. g/dl",
         "value": "Testwert eingeben"
       },
-      "title": "Testkomponente bearbeiten",
+      "title": "Test bearbeiten",
       "trendLinking": "Trendverknüpfung",
-      "updating": "Testkomponente wird aktualisiert..."
+      "updating": "Test wird aktualisiert..."
     },
     "emptyState": {
       "description": "Vorlagen bieten gängige Laborprofile (Blutbild, CMP usw.), bei denen Sie Werte und Bereiche eingeben können. Der Massenimport ermöglicht das Kopieren/Einfügen von Ergebnissen aus Laborberichten zur automatischen Analyse."
     },
-    "errorLoading": "Fehler beim Laden der Testkomponenten",
-    "noComponents": "Keine Testkomponenten",
-    "noComponentsDescription": "Dieses Laborergebnis hat noch keine einzelnen Testkomponenten.",
+    "errorLoading": "Fehler beim Laden der Tests",
+    "noComponents": "Keine Tests",
+    "noComponentsDescription": "Dieses Laborergebnis hat noch keine Tests.",
     "notifications": {
       "componentDeleted": "Komponente gelöscht",
       "hasBeenDeleted": "{{name}} wurde gelöscht"
@@ -384,7 +387,12 @@
       "statistics": "Statistiken",
       "testResults": "Testergebnisse"
     },
-    "title": "Testkomponenten"
+    "title": "Tests",
+    "resultType": {
+      "qualitative": "Qualitativ (Pos/Neg)",
+      "quantitative": "Quantitativ (Numerisch)",
+      "textual": "Textuell (Bericht)"
+    }
   },
   "testingFacility": {
     "description": "Wo der Test durchgeführt wird/wurde",
@@ -428,7 +436,8 @@
     "noDataPoints": "Keine Datenpunkte zum Anzeigen",
     "positiveDetected": "Positiv/Nachgewiesen",
     "referenceRange": "Referenzbereich:",
-    "referenceValue": "Referenz: {{min}} - {{max}}"
+    "referenceValue": "Referenz: {{min}} - {{max}}",
+    "notAvailableForTextual": "Trenddiagramme sind für Textergebnisse nicht verfügbar."
   },
   "trends": {
     "abnormalLabel": "Abnormal:",
@@ -449,7 +458,11 @@
     "summaryStatistics": "Zusammenfassende Statistiken",
     "timeRange": "Zeitraum",
     "title": "Trendanalyse",
-    "total": "Gesamt"
+    "total": "Gesamt",
+    "decreasing": "Abnehmend",
+    "increasing": "Zunehmend",
+    "stable": "Stabil",
+    "textualNoStats": "Numerische Statistiken sind für Textergebnisse nicht verfügbar."
   },
   "trendTable": {
     "clickToSort": "Klicken Sie auf Spaltenüberschriften zum Sortieren",
@@ -457,7 +470,8 @@
     "historicalData_one": "Historische Daten ({{count}} Punkt)",
     "historicalData_other": "Historische Daten ({{count}} Punkte)",
     "labResult": "Laborergebnis",
-    "noDataPoints": "Keine Datenpunkte zum Anzeigen"
+    "noDataPoints": "Keine Datenpunkte zum Anzeigen",
+    "notSpecified": "Nicht angegeben"
   },
   "unsavedDataInstructions": "Klicken Sie auf \"Komponenten hinzufügen\" im Vorschau-Tab, um Ihre analysierten Daten vor dem Schließen zu speichern.",
   "unsavedDataMessage_one": "Sie haben {{count}} analysierte Testkomponente(n), die noch nicht hinzugefügt wurde(n). Wenn Sie jetzt schließen, gehen diese analysierten Daten verloren.",
@@ -488,5 +502,24 @@
     "refTextLabel": "Bereichstext",
     "refTextPlaceholder": "z.B. 4,0-5,6 oder <200",
     "refTextDescription": "Überschreibt Min/Max in der Anzeige"
+  },
+  "resultsTable": {
+    "expandAll": "Alle erweitern",
+    "collapseAll": "Alle einklappen",
+    "results": "{{count}} Ergebnis",
+    "results_other": "{{count}} Ergebnisse",
+    "noResults": "Keine Testergebnisse entsprechen den aktuellen Filtern",
+    "dateFrom": "Datum von",
+    "dateTo": "Datum bis",
+    "source": "Quelle",
+    "viewTrends": "Trends anzeigen"
+  },
+  "testEntry": {
+    "label": "Test #{{number}}"
+  },
+  "textualResult": {
+    "label": "Ergebnistext",
+    "noText": "—",
+    "placeholder": "Ergebnistext eingeben (z. B. Keine akuten Befunde)"
   }
 }

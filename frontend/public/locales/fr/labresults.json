@@ -107,14 +107,15 @@
   "discardParsedData": "Abandonner les données analysées",
   "display": {
     "errorDisplaying": "Erreur lors de l'affichage des composants d'analyse",
-    "noComponents": "Aucun composant d'analyse trouvé",
-    "noComponentsDescription": "Les composants d'analyse apparaîtront ici une fois qu'ils seront ajoutés à ce résultat d'analyse.",
+    "noComponents": "Aucun résultat d'analyse trouvé",
+    "noComponentsDescription": "Les résultats d'analyse apparaîtront ici une fois qu'ils seront ajoutés à ce résultat d'analyse.",
     "referenceLabel": "Référence :",
     "resultsGrouped": "{{count}} résultat en plus dans ce groupe",
     "resultsGrouped_other": "{{count}} résultats en plus dans ce groupe",
     "trendAvailable": "Données de tendances disponibles"
   },
   "editTitle": "Editer le résultat d'analyse",
+  "addDetailsTitle": "Ajouter les détails du résultat de laboratoire",
   "emptyLabResultMessage": "Vous avez créé un résultat d'analyse, mais n'avez pas ajouté de composants d'analyse. Souhaitez-vous supprimer ce résultat d'analyse ?",
   "emptyLabResultWarning": "Résultat d'analyse créé, mais vide",
   "errorOccurred": "Une erreur est survenue",
@@ -142,7 +143,6 @@
     "statusIndicator": "Indicateur de statut :",
     "testCodePlaceholder": "ex : 718-7",
     "testComponents": "Composants d'analyse (optionnel)",
-    "testComponentsDescription": "Optionnellement, ajoutez les valeurs d'analyse individuelles. Vous pouvez aussi en ajouter plus ultérieurement.",
     "testDetails": "Détails de l'analyse",
     "unit": "Unité",
     "matchedCommonName": "correspondance : {{name}}"
@@ -158,6 +158,7 @@
   "loading": "Chargement des résultats d'analyse...",
   "loadingHint": "Si cela prend trop longtemps, veuillez rafraîchir la page",
   "messages": {
+    "noRelationshipsAvailable": "Aucune condition médicale ni visite enregistrée. Ajoutez-les d'abord pour les lier ici.",
     "relationshipsCreateInfo": "Les connexions peuvent être ajoutées après avoir sauvegardé le résultat d'analyse.",
     "relationshipsSaveFirst": "Sauvegardez d'abord le résultat d'analyse pour pouvoir le connecter.",
     "testComponentsEditInfo": "Les composants d'analyse peuvent être gérés depuis la page d'aperçu après sauvegarde."
@@ -166,15 +167,16 @@
     "editLabResult": "Editer le résultat d'analyse",
     "labels": {
       "testType": "Type d'analyse",
-        "referenceRange": "Plage de référence"
+      "referenceRange": "Plage de référence"
     },
     "sections": {
       "associatedFiles": "Documents associés",
+      "panelDetails": "Détails du panneau",
       "testInfo": "Informations de l'analyse",
       "testResults": "Résultats d'analyse"
     },
     "tabs": {
-      "testComponents": "Composants d'analyse"
+      "testComponents": "Résultats d'analyse"
     },
     "title": "Détails du résultat d'analyse"
   },
@@ -263,19 +265,19 @@
     "moreCategories": "+{{count}} en plus",
     "moreCategories_one": "+{{count}} en plus",
     "moreCategories_other": "+{{count}} en plus",
-    "noComponents": "Aucun composant d'analyse",
-    "testComponentsCount": "Composants d'analyse ({{count}})",
-    "testComponentsCount_one": "Composant d'analyse ({{count}})",
-    "testComponentsCount_other": "Composants d'analyse ({{count}})",
-    "testComponentsTotal": "{{count}} composant(s) d'analyse",
-    "testComponentsTotal_one": "{{count}} composant d'analyse",
-    "testComponentsTotal_other": "{{count}} composants d'analyse",
-    "unavailable": "Composants d'analyse indisponibles"
+    "noComponents": "Aucun résultat d'analyse",
+    "testComponentsCount": "Résultats d'analyse ({{count}})",
+    "testComponentsCount_one": "Résultat d'analyse ({{count}})",
+    "testComponentsCount_other": "Résultats d'analyse ({{count}})",
+    "testComponentsTotal": "{{count}} résultat(s) d'analyse",
+    "testComponentsTotal_one": "{{count}} résultat d'analyse",
+    "testComponentsTotal_other": "{{count}} résultats d'analyse",
+    "unavailable": "Résultats d'analyse indisponibles"
   },
   "tabs": {
     "bulkEntry": "Saisie de masse",
-    "noComponentsDescription": "Ajoutez des composants d'analyse en utilisant les modèles ou les outils de saisie de masse pour suivre les valeurs d'analyse individuelles et les tendances.",
-    "noComponentsYet": "Aucun composant d'analyse pour l'instant",
+    "noComponentsDescription": "Ajoutez des résultats d'analyse en utilisant les modèles ou les outils de saisie de masse pour suivre les valeurs d'analyse individuelles et les tendances.",
+    "noComponentsYet": "Aucun résultat d'analyse pour l'instant",
     "relationships": "Connexions",
     "resultsStatus": "Résultats & Statut",
     "templates": "Modèle"
@@ -317,7 +319,7 @@
     "placeholder": "ex : 85025"
   },
   "testComponents": {
-    "addTestComponents": "Ajouter des composants d'analyse",
+    "addTestComponents": "Ajouter des analyses",
     "addTests": "Ajouter des analyses",
     "categories": {
       "cardiology": "Cardiologie - Coeur et marqueurs cardiaques",
@@ -332,7 +334,8 @@
       "molecular": "Moléculaire - Analyses d'ADN",
       "other": "Autres analyses",
       "pathology": "Pathologie - Analyses de tissus et de biopsies",
-      "toxicology": "Toxicologie - Dépistage de drogues et toxines"
+      "toxicology": "Toxicologie - Dépistage de drogues et toxines",
+      "imaging": "Imagerie - Radiologie & Scans"
     },
     "editModal": {
       "descriptions": {
@@ -365,16 +368,16 @@
         "unit": "ex : g/dL",
         "value": "Saisissez la valeur de l'analyse"
       },
-      "title": "Editer le composant d'analyse",
+      "title": "Modifier l'analyse",
       "trendLinking": "Connexion aux tendances",
-      "updating": "Mise à jour du composant d'analyse..."
+      "updating": "Mise à jour de l'analyse..."
     },
     "emptyState": {
       "description": "Les modèles fournissent des batteries d'analyse communes (hémogramme, panel métabolique complet, etc.) où vous pouvez saisir des valeurs et des plages. L'importation de masse vous permet de copier/coller des résultats de rapports d'analyse pour les analyser automatiquement."
     },
-    "errorLoading": "Erreur lors du chargement des composants d'analyse",
-    "noComponents": "Aucun composant d'analyse",
-    "noComponentsDescription": "Ce résultat d'analyse ne possède pas encore de composants d'analyse individuels.",
+    "errorLoading": "Erreur lors du chargement des analyses",
+    "noComponents": "Aucune analyse",
+    "noComponentsDescription": "Ce résultat ne possède pas encore d'analyses.",
     "notifications": {
       "componentDeleted": "Composant supprimé",
       "hasBeenDeleted": "{{name}} a été supprimé"
@@ -384,7 +387,12 @@
       "statistics": "Statistiques",
       "testResults": "Résultats d'analyse"
     },
-    "title": "Composants d'analyse"
+    "title": "Analyses",
+    "resultType": {
+      "qualitative": "Qualitatif (Pos/Nég)",
+      "quantitative": "Quantitatif (Numérique)",
+      "textual": "Textuel (Rapport)"
+    }
   },
   "testingFacility": {
     "description": "Où l'analyse est / a été réalisée",
@@ -428,7 +436,8 @@
     "noDataPoints": "Aucun point de donnée à afficher",
     "positiveDetected": "Positif/Détecté",
     "referenceRange": "Plage de référence :",
-    "referenceValue": "Référence : {{min}} - {{max}}"
+    "referenceValue": "Référence : {{min}} - {{max}}",
+    "notAvailableForTextual": "Les graphiques de tendance ne sont pas disponibles pour les résultats textuels."
   },
   "trends": {
     "abnormalLabel": "Anormal :",
@@ -449,7 +458,11 @@
     "summaryStatistics": "Résumé des statistiques",
     "timeRange": "Plage temporelle",
     "title": "Analyse des tendances",
-    "total": "Total"
+    "total": "Total",
+    "decreasing": "Décroissant",
+    "increasing": "Croissant",
+    "stable": "Stable",
+    "textualNoStats": "Les statistiques numériques ne sont pas disponibles pour les résultats textuels."
   },
   "trendTable": {
     "clickToSort": "Cliquez sur les en-têtes de colonnes pour trier les données",
@@ -457,7 +470,8 @@
     "historicalData_one": "Données historiques ({{count}} point)",
     "historicalData_other": "Données historiques ({{count}} points)",
     "labResult": "Résultats d'analyse",
-    "noDataPoints": "Aucun point de donnée à afficher"
+    "noDataPoints": "Aucun point de donnée à afficher",
+    "notSpecified": "Non spécifié"
   },
   "unsavedDataInstructions": "Cliquez sur \"Ajouter des composants\" dans l'onglet d'aperçu pour sauvegarder vos données analysées avant de fermer la fenêtre.",
   "unsavedDataMessage_one": "Vous avez {{count}} composant d'analyse analysé qui n'a pas encore été ajouté. Si vous fermez la fenêtre maintenant, vous perdrez ces données analysées.",
@@ -488,5 +502,24 @@
     "refTextLabel": "Texte de plage",
     "refTextPlaceholder": "ex. 4,0-5,6 ou <200",
     "refTextDescription": "Remplace min/max dans l'affichage"
+  },
+  "resultsTable": {
+    "expandAll": "Tout développer",
+    "collapseAll": "Tout réduire",
+    "results": "{{count}} résultat",
+    "results_other": "{{count}} résultats",
+    "noResults": "Aucun résultat de test ne correspond aux filtres actuels",
+    "dateFrom": "Date de début",
+    "dateTo": "Date de fin",
+    "source": "Source",
+    "viewTrends": "Voir les tendances"
+  },
+  "testEntry": {
+    "label": "Test #{{number}}"
+  },
+  "textualResult": {
+    "label": "Texte du résultat",
+    "noText": "—",
+    "placeholder": "Saisir le texte du résultat (p. ex. Aucune anomalie aiguë)"
   }
 }

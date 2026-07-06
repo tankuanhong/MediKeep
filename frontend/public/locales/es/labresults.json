@@ -107,14 +107,15 @@
   "discardParsedData": "Descartar datos analizados",
   "display": {
     "errorDisplaying": "Error al mostrar los componentes de la prueba",
-    "noComponents": "No se encontraron componentes de prueba",
-    "noComponentsDescription": "Los componentes de la prueba aparecerán aquí una vez que se agreguen a este resultado de laboratorio.",
+    "noComponents": "No se encontraron resultados de prueba",
+    "noComponentsDescription": "Los resultados de la prueba aparecerán aquí una vez que se agreguen a este resultado de laboratorio.",
     "referenceLabel": "Referencia:",
     "resultsGrouped": "{{count}} resultado más en este grupo",
     "resultsGrouped_other": "{{count}} resultados más en este grupo",
     "trendAvailable": "Datos de tendencia disponibles"
   },
   "editTitle": "Editar resultado de laboratorio",
+  "addDetailsTitle": "Agregar detalles del resultado de laboratorio",
   "emptyLabResultMessage": "Creó un resultado de laboratorio pero no agregó ningún componente de prueba. ¿Desea eliminar este resultado de laboratorio?",
   "emptyLabResultWarning": "Resultado de laboratorio creado pero vacío",
   "errorOccurred": "Se produjo un error",
@@ -142,7 +143,6 @@
     "statusIndicator": "Indicador de estado:",
     "testCodePlaceholder": "p. ej., 718-7",
     "testComponents": "Componentes de prueba (opcional)",
-    "testComponentsDescription": "Opcionalmente agregue valores de prueba individuales. También puede agregar más después.",
     "testDetails": "Detalles de la prueba",
     "unit": "Unidad",
     "matchedCommonName": "coincidencia: {{name}}"
@@ -158,6 +158,7 @@
   "loading": "Cargando resultados de laboratorio...",
   "loadingHint": "Si esto tarda demasiado, por favor actualice la página",
   "messages": {
+    "noRelationshipsAvailable": "No hay condiciones médicas ni visitas registradas. Agréguelas primero para vincularlas aquí.",
     "relationshipsCreateInfo": "Las relaciones se pueden agregar después de guardar el resultado de laboratorio.",
     "relationshipsSaveFirst": "Guarde el resultado de laboratorio primero para crear vínculos de relación.",
     "testComponentsEditInfo": "Los componentes de prueba se pueden gestionar desde la página de visualización después de guardar."
@@ -166,15 +167,16 @@
     "editLabResult": "Editar resultado de laboratorio",
     "labels": {
       "testType": "Tipo de prueba",
-        "referenceRange": "Rango de referencia"
+      "referenceRange": "Rango de referencia"
     },
     "sections": {
       "associatedFiles": "Documentos asociados",
+      "panelDetails": "Detalles del panel",
       "testInfo": "Información de la prueba",
       "testResults": "Resultados de la prueba"
     },
     "tabs": {
-      "testComponents": "Componentes de prueba"
+      "testComponents": "Resultados de la prueba"
     },
     "title": "Detalles del resultado de laboratorio"
   },
@@ -263,19 +265,19 @@
     "moreCategories": "+{{count}} más",
     "moreCategories_one": "+{{count}} más",
     "moreCategories_other": "+{{count}} más",
-    "noComponents": "Sin componentes de prueba",
-    "testComponentsCount": "Componentes de prueba ({{count}})",
-    "testComponentsCount_one": "Componentes de prueba ({{count}})",
-    "testComponentsCount_other": "Componentes de prueba ({{count}})",
-    "testComponentsTotal": "{{count}} componente de prueba",
-    "testComponentsTotal_one": "{{count}} componente de prueba",
-    "testComponentsTotal_other": "{{count}} componentes de prueba",
-    "unavailable": "Componentes de prueba no disponibles"
+    "noComponents": "Sin resultados de prueba",
+    "testComponentsCount": "Resultados de prueba ({{count}})",
+    "testComponentsCount_one": "Resultados de prueba ({{count}})",
+    "testComponentsCount_other": "Resultados de prueba ({{count}})",
+    "testComponentsTotal": "{{count}} resultado de prueba",
+    "testComponentsTotal_one": "{{count}} resultado de prueba",
+    "testComponentsTotal_other": "{{count}} resultados de prueba",
+    "unavailable": "Resultados de prueba no disponibles"
   },
   "tabs": {
     "bulkEntry": "Entrada masiva",
-    "noComponentsDescription": "Agregue componentes de prueba usando las plantillas o las herramientas de entrada masiva a continuación para rastrear valores de laboratorio individuales y tendencias.",
-    "noComponentsYet": "Aún no hay componentes de prueba",
+    "noComponentsDescription": "Agregue resultados de prueba usando las plantillas o las herramientas de entrada masiva a continuación para rastrear valores de laboratorio individuales y tendencias.",
+    "noComponentsYet": "Aún no hay resultados de prueba",
     "relationships": "Relaciones",
     "resultsStatus": "Resultados y estado",
     "templates": "Plantillas"
@@ -317,7 +319,7 @@
     "placeholder": "p. ej., CBC, 85025"
   },
   "testComponents": {
-    "addTestComponents": "Agregar componentes de prueba",
+    "addTestComponents": "Agregar pruebas",
     "addTests": "Agregar pruebas",
     "categories": {
       "cardiology": "Cardiología - Marcadores cardíacos y del corazón",
@@ -332,7 +334,8 @@
       "molecular": "Molecular - Pruebas de ADN",
       "other": "Otras pruebas",
       "pathology": "Patología - Análisis de tejidos y biopsias",
-      "toxicology": "Toxicología - Detección de drogas y toxinas"
+      "toxicology": "Toxicología - Detección de drogas y toxinas",
+      "imaging": "Imágenes - Radiología y Escaneos"
     },
     "editModal": {
       "descriptions": {
@@ -365,16 +368,16 @@
         "unit": "p. ej., g/dL",
         "value": "Ingrese el valor de la prueba"
       },
-      "title": "Editar componente de prueba",
+      "title": "Editar prueba",
       "trendLinking": "Vinculación de tendencias",
-      "updating": "Actualizando componente de prueba..."
+      "updating": "Actualizando prueba..."
     },
     "emptyState": {
       "description": "Las plantillas proporcionan paneles de laboratorio comunes (CBC, CMP, etc.) donde puede ingresar valores y rangos. La importación masiva le permite copiar y pegar resultados de informes de laboratorio para un análisis automático."
     },
-    "errorLoading": "Error al cargar los componentes de prueba",
-    "noComponents": "Sin componentes de prueba",
-    "noComponentsDescription": "Este resultado de laboratorio aún no tiene componentes de prueba individuales.",
+    "errorLoading": "Error al cargar las pruebas",
+    "noComponents": "Sin pruebas",
+    "noComponentsDescription": "Este resultado de laboratorio aún no tiene pruebas.",
     "notifications": {
       "componentDeleted": "Componente eliminado",
       "hasBeenDeleted": "{{name}} ha sido eliminado"
@@ -384,7 +387,12 @@
       "statistics": "Estadísticas",
       "testResults": "Resultados de pruebas"
     },
-    "title": "Componentes de prueba"
+    "title": "Pruebas",
+    "resultType": {
+      "qualitative": "Cualitativo (Pos/Neg)",
+      "quantitative": "Cuantitativo (Numérico)",
+      "textual": "Textual (Informe)"
+    }
   },
   "testingFacility": {
     "description": "Donde se realiza o realizó la prueba",
@@ -428,7 +436,8 @@
     "noDataPoints": "No hay puntos de datos para mostrar",
     "positiveDetected": "Positivo/Detectado",
     "referenceRange": "Rango de referencia:",
-    "referenceValue": "Referencia: {{min}} - {{max}}"
+    "referenceValue": "Referencia: {{min}} - {{max}}",
+    "notAvailableForTextual": "Los gráficos de tendencia no están disponibles para resultados textuales."
   },
   "trends": {
     "abnormalLabel": "Anormal:",
@@ -449,7 +458,11 @@
     "summaryStatistics": "Estadísticas resumidas",
     "timeRange": "Período de tiempo",
     "title": "Análisis de tendencias",
-    "total": "Total"
+    "total": "Total",
+    "decreasing": "Decreciente",
+    "increasing": "Creciente",
+    "stable": "Estable",
+    "textualNoStats": "Las estadísticas numéricas no están disponibles para resultados textuales."
   },
   "trendTable": {
     "clickToSort": "Haga clic en los encabezados de columna para ordenar",
@@ -457,7 +470,8 @@
     "historicalData_one": "Datos históricos ({{count}} punto)",
     "historicalData_other": "Datos históricos ({{count}} puntos)",
     "labResult": "Resultado de laboratorio",
-    "noDataPoints": "No hay puntos de datos para mostrar"
+    "noDataPoints": "No hay puntos de datos para mostrar",
+    "notSpecified": "No especificado"
   },
   "unsavedDataInstructions": "Haga clic en \"Agregar componentes\" en la pestaña de vista previa para guardar los datos analizados antes de cerrar.",
   "unsavedDataMessage_one": "Tiene {{count}} componente(s) de prueba analizado(s) que aún no se han agregado. Si cierra ahora, perderá estos datos analizados.",
@@ -488,5 +502,24 @@
     "refTextLabel": "Texto de rango",
     "refTextPlaceholder": "ej. 4,0-5,6 o <200",
     "refTextDescription": "Anula min/máx en la visualización"
+  },
+  "resultsTable": {
+    "expandAll": "Expandir todo",
+    "collapseAll": "Contraer todo",
+    "results": "{{count}} resultado",
+    "results_other": "{{count}} resultados",
+    "noResults": "Ningún resultado de prueba coincide con los filtros actuales",
+    "dateFrom": "Fecha desde",
+    "dateTo": "Fecha hasta",
+    "source": "Fuente",
+    "viewTrends": "Ver tendencias"
+  },
+  "testEntry": {
+    "label": "Prueba #{{number}}"
+  },
+  "textualResult": {
+    "label": "Texto del resultado",
+    "noText": "—",
+    "placeholder": "Ingrese texto del resultado (p. ej. Sin hallazgos agudos)"
   }
 }

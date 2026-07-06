@@ -1244,10 +1244,11 @@
   },
   "viewToggle": {
     "cards": "การ์ด",
-    "components": "ส่วนประกอบ",
+    "components": "ผลการทดสอบ",
     "label": "โหมดการแสดง",
     "table": "ตาราง",
-    "stacked": "แบบซ้อน"
+    "stacked": "แบบซ้อน",
+    "labwork": "งานห้องปฏิบัติการ"
   },
   "visits": {
     "addNewVisit": "เพิ่มการเยี่ยมใหม่",

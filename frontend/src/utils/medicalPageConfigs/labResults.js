@@ -65,11 +65,6 @@ export const labresultsPageConfig = {
         description: 'Metabolic panels, enzymes',
       },
       {
-        value: 'hematology',
-        label: 'Hematology',
-        description: 'Blood cell counts and coagulation',
-      },
-      {
         value: 'immunology',
         label: 'Immunology',
         description: 'Immune system and antibody tests',
@@ -311,8 +306,8 @@ export const labresultsPageConfig = {
       },
       {
         value: 'test_name',
-        label: 'Test Name',
-        description: 'Sort alphabetically by test name',
+        label: 'Lab Name',
+        description: 'Sort alphabetically by lab name',
       },
       {
         value: 'status',

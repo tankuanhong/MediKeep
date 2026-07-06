@@ -1244,10 +1244,11 @@
   },
   "viewToggle": {
     "cards": "Karty",
-    "components": "Składniki",
+    "components": "Wyniki testów",
     "label": "Tryb widoku",
     "table": "Tabela",
-    "stacked": "Skumulowane"
+    "stacked": "Skumulowane",
+    "labwork": "Badania"
   },
   "visits": {
     "addNewVisit": "Dodaj nową wizytę",

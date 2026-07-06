@@ -1244,10 +1244,11 @@
   },
   "viewToggle": {
     "cards": "Schede",
-    "components": "Componenti",
+    "components": "Risultati dei test",
     "label": "Modalità di visualizzazione",
     "table": "Tabella",
-    "stacked": "In pila"
+    "stacked": "In pila",
+    "labwork": "Analisi"
   },
   "visits": {
     "addNewVisit": "Aggiungi nuova visita",

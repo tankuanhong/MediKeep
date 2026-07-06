@@ -1244,10 +1244,11 @@
   },
   "viewToggle": {
     "cards": "Kaarten",
-    "components": "Componenten",
+    "components": "Testresultaten",
     "label": "Weergavemodus",
     "table": "Tabel",
-    "stacked": "Gestapeld"
+    "stacked": "Gestapeld",
+    "labwork": "Labwerk"
   },
   "visits": {
     "addNewVisit": "Nieuw consult toevoegen",

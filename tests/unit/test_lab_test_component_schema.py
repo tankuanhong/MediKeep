@@ -215,28 +215,30 @@ class TestQualitativeAutoStatus:
 class TestCrossFieldValidation:
     """Tests for cross-field validation between quantitative and qualitative."""
 
-    def test_quantitative_requires_value(self):
-        with pytest.raises(ValidationError, match="Value is required for quantitative"):
-            make_component(value=None, unit="mg/dL")
+    def test_quantitative_allows_null_value(self):
+        # Values are optional on create so panel templates can be saved without pre-filled results
+        comp = make_component(value=None, unit="mg/dL")
+        assert comp.value is None
 
-    def test_quantitative_requires_unit(self):
-        with pytest.raises(ValidationError, match="Unit is required for quantitative"):
-            make_component(value=5.0, unit=None)
+    def test_quantitative_unit_is_optional(self):
+        comp = make_component(value=5.0, unit=None)
+        assert comp.unit is None
 
     def test_qualitative_rejects_numeric_value(self):
         with pytest.raises(ValidationError, match="Numeric value must be empty"):
             make_qualitative_component(value=5.0)
 
-    def test_qualitative_requires_qualitative_value(self):
-        with pytest.raises(ValidationError, match="Qualitative value is required"):
-            LabTestComponentCreate(
-                test_name="HIV",
-                lab_result_id=1,
-                result_type="qualitative",
-                qualitative_value=None,
-                value=None,
-                unit=None,
-            )
+    def test_qualitative_allows_null_qualitative_value(self):
+        # qualitative_value is optional on create for the same reason as quantitative value
+        comp = LabTestComponentCreate(
+            test_name="HIV",
+            lab_result_id=1,
+            result_type="qualitative",
+            qualitative_value=None,
+            value=None,
+            unit=None,
+        )
+        assert comp.qualitative_value is None
 
     def test_qualitative_rejects_ref_range_min(self):
         with pytest.raises(
@@ -410,6 +412,33 @@ class TestResponseSerializationRegression:
         )
         assert resp.ref_range_text == long_text
 
+    def test_response_tolerates_textual_value_over_5000_chars(self):
+        """Response must not raise on textual_value longer than 5000 chars (DB-sourced rows)."""
+        long_text = "x" * 6000
+        resp = LabTestComponentResponse(
+            id=8,
+            test_name="Radiology Report",
+            lab_result_id=1,
+            result_type="textual",
+            textual_value=long_text,
+            value=None,
+            unit=None,
+        )
+        assert len(resp.textual_value) == 6000
+
+    def test_response_still_strips_textual_value(self):
+        """The lenient override should still strip surrounding whitespace."""
+        resp = LabTestComponentResponse(
+            id=9,
+            test_name="Radiology Report",
+            lab_result_id=1,
+            result_type="textual",
+            textual_value="  findings  ",
+            value=None,
+            unit=None,
+        )
+        assert resp.textual_value == "findings"
+
 
 class TestRefRangeTextLength:
     """Length validation for ref_range_text on the input paths (#894).
@@ -465,13 +494,13 @@ class TestUpdateCrossFieldValidation:
                 unit="mg/dL",
             )
 
-    def test_clearing_unit_on_quantitative_rejected(self):
-        with pytest.raises(ValidationError, match="Unit cannot be cleared"):
-            LabTestComponentUpdate(
-                result_type="quantitative",
-                value=5.0,
-                unit="",
-            )
+    def test_clearing_unit_on_quantitative_accepted(self):
+        update = LabTestComponentUpdate(
+            result_type="quantitative",
+            value=5.0,
+            unit="",
+        )
+        assert update.unit is None
 
     def test_clearing_qualitative_value_on_qualitative_rejected(self):
         with pytest.raises(
@@ -505,15 +534,22 @@ class TestUpdateCrossFieldValidation:
         with pytest.raises(ValidationError, match="result_type must be provided"):
             LabTestComponentUpdate(value=None)
 
-    def test_clearing_unit_without_result_type_rejected(self):
-        """Clearing unit without specifying result_type is ambiguous."""
-        with pytest.raises(ValidationError, match="result_type must be provided"):
-            LabTestComponentUpdate(unit="")
+    def test_clearing_unit_without_result_type_accepted(self):
+        """Clearing unit is allowed since unit is optional for quantitative tests."""
+        update = LabTestComponentUpdate(unit="")
+        assert update.unit is None
 
-    def test_switching_to_quantitative_requires_value_and_unit(self):
-        """Changing result_type to quantitative must include value and unit."""
-        with pytest.raises(ValidationError, match="value and unit must be provided"):
-            LabTestComponentUpdate(result_type="quantitative", value=42.0)
+    def test_switching_to_quantitative_requires_value(self):
+        """Changing result_type to quantitative must include value; unit is optional."""
+        with pytest.raises(ValidationError, match="value must be provided"):
+            LabTestComponentUpdate(result_type="quantitative")
+
+    def test_switching_to_quantitative_without_unit_accepted(self):
+        """Changing result_type to quantitative with value but no unit is valid."""
+        update = LabTestComponentUpdate(result_type="quantitative", value=42.0)
+        assert update.result_type == "quantitative"
+        assert update.value == 42.0
+        assert update.unit is None
 
     def test_switching_to_qualitative_requires_qualitative_value(self):
         """Changing result_type to qualitative must include qualitative_value."""
