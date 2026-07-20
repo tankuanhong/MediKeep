@@ -18,17 +18,19 @@ import {
 import {
   IconInfoCircle,
   IconFlask,
-  IconUsers,
   IconTags,
   IconFileText,
   IconNotes,
-  IconStethoscope,
+  IconLink,
 } from '@tabler/icons-react';
 import StatusBadge from '../StatusBadge';
 import { ClickableTagBadge } from '../../common/ClickableTagBadge';
 import { useTagColors } from '../../../hooks/useTagColors';
 import ConditionRelationships from '../ConditionRelationships';
 import LabResultEncounterRelationships from './LabResultEncounterRelationships';
+import LabResultMedicationRelationships from './LabResultMedicationRelationships';
+import LabResultProcedureRelationships from './LabResultProcedureRelationships';
+import LabResultTreatmentRelationships from './LabResultTreatmentRelationships';
 import DocumentManagerWithProgress from '../../shared/DocumentManagerWithProgress';
 import TestComponentsTab from './TestComponentsTab';
 import logger from '../../../services/logger';
@@ -41,22 +43,31 @@ const LabResultViewModal = ({
   onEdit,
   practitioners,
   onFileUploadComplete,
-  conditions,
-  labResultConditions,
+  conditions = [],
+  labResultConditions = {},
   fetchLabResultConditions,
   navigate,
   isBlocking,
   onError,
   onLabResultUpdated,
   initialTab = 'overview',
-  encounters,
-  labResultEncounters,
+  encounters = [],
+  labResultEncounters = {},
   fetchLabResultEncounters,
+  medications = [],
+  labResultMedications = {},
+  fetchLabResultMedications,
+  procedures = [],
+  labResultProcedures = {},
+  fetchLabResultProcedures,
+  treatments = [],
+  labResultTreatments = {},
+  fetchLabResultTreatments,
   disableEdit = false,
   disableEditTooltip,
   isGroupedResult = false,
 }) => {
-  const { t } = useTranslation(['common', 'shared']);
+  const { t } = useTranslation(['common', 'shared', 'labresults']);
   const { formatDate } = useDateFormat();
   const { getTagColor } = useTagColors();
 
@@ -79,8 +90,6 @@ const LabResultViewModal = ({
     const conditionalTabs = {
       notes: !!labResult?.notes,
       tags: labResult?.tags?.length > 0,
-      conditions: !!fetchLabResultConditions,
-      encounters: !!fetchLabResultEncounters,
       'test-components': isGroupedResult || hasTestComponents !== false,
     };
     if (activeTab in conditionalTabs && !conditionalTabs[activeTab]) {
@@ -92,8 +101,6 @@ const LabResultViewModal = ({
     isGroupedResult,
     labResult?.notes,
     labResult?.tags?.length,
-    fetchLabResultConditions,
-    fetchLabResultEncounters,
     hasTestComponents,
   ]);
 
@@ -188,22 +195,9 @@ const LabResultViewModal = ({
                   {t('labresults:modal.tabs.testComponents', 'Tests')}
                 </Tabs.Tab>
               )}
-              {fetchLabResultConditions && (
-                <Tabs.Tab
-                  value="conditions"
-                  leftSection={<IconUsers size={16} />}
-                >
-                  {t('shared:labels.relatedConditions', 'Related Conditions')}
-                </Tabs.Tab>
-              )}
-              {fetchLabResultEncounters && (
-                <Tabs.Tab
-                  value="encounters"
-                  leftSection={<IconStethoscope size={16} />}
-                >
-                  {t('shared:tabs.visits', 'Visits')}
-                </Tabs.Tab>
-              )}
+              <Tabs.Tab value="relationships" leftSection={<IconLink size={16} />}>
+                {t('labresults:tabs.relationships', 'Relationships')}
+              </Tabs.Tab>
               {labResult.notes && (
                 <Tabs.Tab value="notes" leftSection={<IconNotes size={16} />}>
                   {t('shared:tabs.notes', 'Notes')}
@@ -509,39 +503,129 @@ const LabResultViewModal = ({
               </Box>
             </Tabs.Panel>
 
-            {/* Related Conditions Tab */}
-            {fetchLabResultConditions && (
-              <Tabs.Panel value="conditions">
-                <Box mt="md">
-                  <ConditionRelationships
-                    key={`conditions-${labResult.id}`}
-                    labResultId={labResult.id}
-                    labResultConditions={labResultConditions}
-                    conditions={conditions}
-                    fetchLabResultConditions={fetchLabResultConditions}
-                    navigate={navigate}
-                    isViewMode={true}
-                  />
-                </Box>
-              </Tabs.Panel>
-            )}
-
-            {/* Encounters/Visits Tab */}
-            {fetchLabResultEncounters && (
-              <Tabs.Panel value="encounters">
-                <Box mt="md">
-                  <LabResultEncounterRelationships
-                    key={`encounters-${labResult.id}`}
-                    labResultId={labResult.id}
-                    labResultEncounters={labResultEncounters}
-                    encounters={encounters}
-                    fetchLabResultEncounters={fetchLabResultEncounters}
-                    navigate={navigate}
-                    isViewMode={disableEdit}
-                  />
-                </Box>
-              </Tabs.Panel>
-            )}
+            {/* Relationships Tab */}
+            <Tabs.Panel value="relationships">
+              <Box mt="md">
+                <Stack gap="md">
+                  {conditions.length > 0 && (
+                    <Paper withBorder p="md" bg="var(--color-bg-secondary)">
+                      <Stack gap="md">
+                        <Title order={5}>
+                          {t('labresults:form.linkConditionsTitle')}
+                        </Title>
+                        <ConditionRelationships
+                          key={`conditions-${labResult.id}`}
+                          labResultId={labResult.id}
+                          labResultConditions={labResultConditions}
+                          conditions={conditions}
+                          fetchLabResultConditions={fetchLabResultConditions}
+                          navigate={navigate}
+                          isViewMode={true}
+                        />
+                      </Stack>
+                    </Paper>
+                  )}
+                  {encounters.length > 0 && (
+                    <Paper withBorder p="md" bg="var(--color-bg-secondary)">
+                      <Stack gap="md">
+                        <Title order={5}>
+                          {t(
+                            'common:labResults.form.linkVisitsTitle',
+                            'Link to Visits'
+                          )}
+                        </Title>
+                        <LabResultEncounterRelationships
+                          key={`encounters-${labResult.id}`}
+                          labResultId={labResult.id}
+                          labResultEncounters={labResultEncounters}
+                          encounters={encounters}
+                          fetchLabResultEncounters={fetchLabResultEncounters}
+                          navigate={navigate}
+                          isViewMode={true}
+                        />
+                      </Stack>
+                    </Paper>
+                  )}
+                  {medications.length > 0 && (
+                    <Paper withBorder p="md" bg="var(--color-bg-secondary)">
+                      <Stack gap="md">
+                        <Title order={5}>
+                          {t(
+                            'labresults:form.linkMedicationsTitle',
+                            'Link to Medications'
+                          )}
+                        </Title>
+                        <LabResultMedicationRelationships
+                          key={`medications-${labResult.id}`}
+                          labResultId={labResult.id}
+                          labResultMedications={labResultMedications}
+                          medications={medications}
+                          fetchLabResultMedications={fetchLabResultMedications}
+                          navigate={navigate}
+                          isViewMode={true}
+                        />
+                      </Stack>
+                    </Paper>
+                  )}
+                  {procedures.length > 0 && (
+                    <Paper withBorder p="md" bg="var(--color-bg-secondary)">
+                      <Stack gap="md">
+                        <Title order={5}>
+                          {t(
+                            'labresults:form.linkProceduresTitle',
+                            'Link to Procedures'
+                          )}
+                        </Title>
+                        <LabResultProcedureRelationships
+                          key={`procedures-${labResult.id}`}
+                          labResultId={labResult.id}
+                          labResultProcedures={labResultProcedures}
+                          procedures={procedures}
+                          fetchLabResultProcedures={fetchLabResultProcedures}
+                          navigate={navigate}
+                          isViewMode={true}
+                        />
+                      </Stack>
+                    </Paper>
+                  )}
+                  {treatments.length > 0 && (
+                    <Paper withBorder p="md" bg="var(--color-bg-secondary)">
+                      <Stack gap="md">
+                        <Title order={5}>
+                          {t(
+                            'labresults:form.linkTreatmentsTitle',
+                            'Link to Treatments'
+                          )}
+                        </Title>
+                        <LabResultTreatmentRelationships
+                          key={`treatments-${labResult.id}`}
+                          labResultId={labResult.id}
+                          labResultTreatments={labResultTreatments}
+                          treatments={treatments}
+                          fetchLabResultTreatments={fetchLabResultTreatments}
+                          navigate={navigate}
+                          isViewMode={true}
+                        />
+                      </Stack>
+                    </Paper>
+                  )}
+                  {conditions.length === 0 &&
+                    encounters.length === 0 &&
+                    medications.length === 0 &&
+                    procedures.length === 0 &&
+                    treatments.length === 0 && (
+                      <Paper withBorder p="md" ta="center">
+                        <Text c="dimmed">
+                          {t(
+                            'labresults:messages.noRelationshipsOnRecord',
+                            'No medical conditions, visits, medications, procedures, or treatments on record for this patient.'
+                          )}
+                        </Text>
+                      </Paper>
+                    )}
+                </Stack>
+              </Box>
+            </Tabs.Panel>
 
             {/* Notes Tab */}
             {labResult.notes && (
